@@ -52,6 +52,7 @@ public class MainController {
             String name        = catView.inputName();
             String color       = catView.selectColor();
             String personality = catView.selectPersonality();
+         // 국희수정
             // 유진 수정
             catId = catService.createCat(name, color, personality);
             catView.printCreateSuccess(name, color, personality);
