@@ -28,7 +28,6 @@ public class CatService {
         cat.setLocationId(1);
         return catDAO.insertCat(cat); // ID 반환
     }
-
     /**
      * 고양이 정보를 조회한다
      */
