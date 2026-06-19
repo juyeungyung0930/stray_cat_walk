@@ -52,7 +52,8 @@ public class MainController {
             String name        = catView.inputName();
             String color       = catView.selectColor();
             String personality = catView.selectPersonality();
-            catService.createCat(name, color, personality);
+            // 유진 수정
+            catId = catService.createCat(name, color, personality);
             catView.printCreateSuccess(name, color, personality);
 
             // 메인 게임 루프
