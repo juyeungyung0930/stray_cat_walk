@@ -14,12 +14,14 @@ public class CatDAO {
     /**
      * 새 고양이 캐릭터를 DB에 저장한다 (게임 시작 시 1회 호출)
      */
-    public void insertCat(CatDTO cat) throws SQLException {
+    public int insertCat(CatDTO cat) throws SQLException {
         String sql = "INSERT INTO CAT (CAT_ID, NAME, COLOR, PERSONALITY, HUNGER, FATIGUE, MOOD, LOCATION_ID) "
                    + "VALUES (CAT_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int newCatId = 0;
         try {
             conn = DBUtil.getConnection();
             pstmt = conn.prepareStatement(sql);
@@ -31,10 +33,18 @@ public class CatDAO {
             pstmt.setInt(6, cat.getMood());
             pstmt.setInt(7, cat.getLocationId());
             pstmt.executeUpdate();
+            
+            pstmt = conn.prepareStatement("select cat_seq.currval from dual");
+            rs = pstmt.executeQuery();
+            if(rs.next()) {
+            	newCatId = rs.getInt(1);
+            }
         } finally {
             if (pstmt != null) pstmt.close();
+            if (rs != null) rs.close();
             DBUtil.close(conn);
         }
+        return newCatId;
     }
 
     /**
