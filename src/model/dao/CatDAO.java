@@ -1,9 +1,12 @@
 package model.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import common.DBUtil;
 import model.dto.CatDTO;
-
-import java.sql.*;
 
 /**
  * 고양이 캐릭터 관련 DB 작업을 담당하는 DAO
