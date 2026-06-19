@@ -17,16 +17,16 @@ public class CatService {
      * 게임 시작 시 고양이 캐릭터를 생성한다
      * 초기 수치: 허기 70, 피로 10, 기분 70, 시작 위치 1번 장소
      */
-    public void createCat(String name, String color, String personality) throws SQLException {
+    public int createCat(String name, String color, String personality) throws SQLException {
         CatDTO cat = new CatDTO();
         cat.setName(name);
         cat.setColor(color);
         cat.setPersonality(personality);
-        cat.setHunger(70);     // 초기 허기 (배부른 상태)
-        cat.setFatigue(10);    // 초기 피로도 (상쾌한 상태)
-        cat.setMood(70);       // 초기 기분
-        cat.setLocationId(1);  // 시작 장소 (1번: 골목)
-        catDAO.insertCat(cat);
+        cat.setHunger(70);
+        cat.setFatigue(10);
+        cat.setMood(70);
+        cat.setLocationId(1);
+        return catDAO.insertCat(cat); // ID 반환
     }
 
     /**
