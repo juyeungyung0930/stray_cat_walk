@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class DBUtil {
 
     // Oracle DB 접속 정보 - 본인 환경에 맞게 수정
-    private static final String URL      = "jdbc:oracle:thin:@localhost:1521:xe";
+    private static final String URL      = "jdbc:oracle:thin:@192.168.0.130:1521:xe";
     private static final String USER     = "catwalk";
     private static final String PASSWORD = "1234";
 
